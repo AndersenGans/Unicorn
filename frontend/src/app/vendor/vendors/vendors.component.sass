@@ -1,0 +1,216 @@
+@import "../../../global-style-variables.sass"
+
+.ui.small.fluid.image
+    height: 135px;
+    border: 1px solid #E5E5E5;
+    object-fit: contain;
+    background-size: 20%;
+    
+.ui.inline.dropdown>.text 
+    font-weight: 700;
+
+.ui.dropdown
+   font-weight: 700;
+.per-type
+    margin-top: 0
+    font-size: 12px
+    color: gray
+.rating-container
+    display: flex;
+    flex-direction: row;
+.rating-box
+    width: 120px;
+.desc
+    font-size: 13px
+
+.location
+    font-size: 13px
+    cursor: pointer
+    color: gray
+
+.book-div
+    text-align: center !important
+
+.reviews
+    font-size: 12px
+
+.ui.active.button.main
+  background: #FF647A;
+  color: white;
+
+.left-padded
+    padding-left: 20px
+
+.empty-header
+    color: gray
+    font-size: 16px
+    font-weight: normal
+
+.map-container 
+    position: fixed
+    right: 10px
+    top: calc(15px + #{$header-height})
+    width: 48% 
+    height: calc(100vh - 40px - #{$header-height} - #{$footer-height} - #{$separator-height} - #{$separator-margin})    
+    background-color: gray
+
+.map
+    height: 100%
+
+.map-marker
+    font-weight: bold
+    background-color: white
+    padding: 3px
+    border: 1px solid black
+    border-radius: 5px
+
+.map-marker > a
+    cursor: pointer
+
+.active-marker
+    border: 2px solid red
+    position: relative
+    z-index: 1
+
+.flex-centered
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+#paging 
+    margin-bottom: 20px
+
+.search-btn-div
+    display: flex !important
+    flex-wrap: nowrap
+
+.search-btn-div > button
+    width: 100%
+
+.search-btn-div > a
+    width: 100%
+
+#search-bar
+    margin-bottom: 30px
+    position: sticky;
+    z-index: 1;
+    background: white;
+    top: 65px;
+    width: 101%;
+
+.sixteen.wide.column.head-column
+    padding-top: 23px!important;
+
+.desc-div
+    height: 40px
+    overflow: hidden
+
+.ui.active.button.secondary
+    background: transparent;
+    color: $primary-color;
+    border: solid 1px $primary-color;
+    margin-right: 10px;
+
+sui-rating
+    margin: 10px 0 0 0;
+
+.categories-container
+    margin-left: 15px;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+
+.category
+    margin: 0 2px;
+    padding: 2px 8px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    color: gray;
+
+.slider-box
+    display: flex;
+    flex-direction: row;
+
+.slider
+    width: 85% !important;
+
+sui-multi-select
+    padding-left: 0 !important;
+
+.reviews-checkbox
+    margin: 10px 0 0 0;
+
+.role-check-box
+    margin: 10px 0 0 0;
+
+h5
+    margin: 0;
+
+.category-icon
+	width: 30px!important;
+	height: 30px!important;
+.span
+   font-weight: 700;
+
+.label-box
+    display: flex;
+    margin-top: 0.6em;
+    justify-content: center;
+    &:hover
+        cursor: pointer;
+    .selected
+        background: $primary-color;
+        color: white;
+
+.cell-selected
+    margin: 15px 0 !important;
+    padding: 0 !important;
+    border: 1px solid $primary-color;
+    border-radius: 7px;
+    background-color: #fef6f6;
+
+
+// responsive
+
+.ui.grid.container.segment.full-width
+    width: 99% !important
+    margin-left: 0 !important
+
+.post-filters-div
+    width: 100%
+    display: flex
+    justify-content: space-between
+
+.add-filter-container
+    width: 100%
+    display: flex
+
+.add-filter-container-column
+    width: 100%
+    padding-left: 2.5%
+    padding-right: 2.5%
+
+#main
+    width: 52%
+
+@media only screen and (max-width: 600px)
+    .add-filter-container
+        flex-wrap: wrap
+
+    .add-filter-container-column
+        padding-top: 15px
+
+@media only screen and (max-width: 1000px)
+    .map-container
+        display: none
+
+    #main
+        width: 100%
+
+@media only screen and (max-width: 1300px) and (min-width: 1001px)
+    .map-container
+        width: 34%
+
+    #main
+        width: 66%
+        

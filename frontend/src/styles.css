@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/angular-calendar/dist/css/angular-calendar.css";
+@media only screen and (min-width: 1200px) {
+    .ui.modal.small {
+        position: fixed;
+        top: 12%;
+        width: 500px;
+        margin: 0 0 0 -235px;
+    }
+}
+
+.unread-msg {
+    width: 10px;
+    height: 10px;
+    margin: 0 10px;
+    background: #5bb0ff;
+    border-radius: 10px;
+}
+
+
+/* CALENDAR */
+
+.cal-month-view .cal-day-number {
+    font-size: 1.4em;
+}
+
+.cal-month-view .cal-day-cell.cal-today .cal-day-number {
+    font-size: 2em;
+}
+
+.cal-cell.cal-day-cell.cal-weekend {
+    background: rgba(255, 232, 232, 0.45);
+}
+
+.cal-week-view .cal-header.cal-weekend {
+    background: rgba(255, 232, 232, 0.45);
+}
+
+.ui.toggle.checkbox .box:before,
+.ui.toggle.checkbox label:before {
+    background: rgb(217, 217, 217)!important;
+}
+
+
+/**/
+
+@media only screen and (max-width: 600px) {
+    #search-panel div.menu.transition {
+        bottom: 100%!important;
+        top: unset!important;
+    }
+    #search-bar div.menu.transition {
+        bottom: 100%!important;
+        top: unset!important;
+    }
+}
+
+#charts-main g>text {
+    transform: unset;
+    font-size: 10px!important;
+    fill: gray!important;
+    text-anchor: middle;
+}
+
+#charts-main ngx-charts-line-chart g>text {
+    transform: translate(-5px);
+}
+
+#charts-main ngx-charts-line-chart g>rect {
+    fill: #e6f5ff!important;
+    opacity: 0.3!important;
+}
+
+canvas {
+    width: 100%!important;
+}
+
+/*Responsive notification tab*/
+@media only screen and (max-width: 767px) {
+    .ui.items:not(.unstackable)>.item.no-wrap-item {
+        flex-direction: unset;
+        margin: unset;
+    }
+
+    .ui.items:not(.unstackable)>.item>.image+.content.no-padd-content {
+        padding: 0 0 0 1em;
+    }
+}

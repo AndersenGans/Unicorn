@@ -1,0 +1,191 @@
+<div class="ui container grid" *ngIf="company !== undefined" id="main-container">
+    <div class="row">
+        <div class="column">
+            <label *ngIf="pendingVendors && pendingVendors.length !== 0">Offers</label>
+            <table class="ui selectable padded single line table" *ngIf="pendingVendors && pendingVendors.length !== 0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Experience</th>
+                        <th>Position</th>
+                        <th>Rating</th>
+                        <th class="">Offers status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let offer of pendingVendors">
+                        <td><img class="ui avatar image vendor-icon" src="{{offer.Vendor.Avatar}}"></td>
+                        <td>{{offer.Vendor.FIO}}</td>
+                        <td>{{offer.Vendor.Experience}}</td>
+                        <td>{{offer.Vendor.Position}}</td>
+                        <td>
+                            <sui-rating class="star" [ngModel]="offer.Vendor.Rating" [isReadonly]="true"></sui-rating>
+                        </td>
+                        <td>
+                            <span>{{getOfferStatus(offer)}}</span>
+                            <span class="declined-lbl" (click)="showReason(offer.DeclinedMessage)" *ngIf="haveReason(offer)">Why?</span>
+                        </td>
+                        <td class="right aligned">
+                            <button (click)="deleteOffer(offer)" class="ui button icon">
+                                    <i class="remove icon"></i>
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <label>Vendors</label>
+            <table class="ui selectable padded single line table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Experience</th>
+                        <th>Position</th>
+                        <th>Rating</th>
+                        <th class="right aligned">
+                            <button class="ui basic button add" (click)="openDetailedWindow()">
+                                <h5>Add vendor</h5>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vendor of company.Vendors">
+                        <td><img class="ui avatar image vendor-icon" src="{{vendor.Avatar}}"></td>
+                        <td>{{vendor.FIO}}</td>
+                        <td>{{vendor.Experience}}</td>
+                        <td>{{vendor.Position}}</td>
+                        <td>
+                            <sui-rating class="star" [ngModel]="vendor.Rating" [isReadonly]="true"></sui-rating>
+                        </td>
+                        <td class="right aligned">
+                            <button class="ui button icon" (click)="openDeleteModal(vendor)">
+                                <i class="remove icon"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ui divider" *ngIf="openedDetailedWindow"></div>
+    <div class="right aligned" *ngIf="openedDetailedWindow">
+        <button class="circular ui icon button" (click)="closeDetailedWindow()">
+            <i class="remove icon"></i>
+        </button>
+    </div>
+    <div class="row" *ngIf="openedDetailedWindow">
+        <div class="column">
+            <div>
+                <ng-template let-option #optionVendorTemplate>
+                    <img class="ui avatar image vendor-icon" src="{{option.Avatar}}">{{option.FIO}}
+                </ng-template>
+                <label>Select a vendor</label>
+                <sui-select class="selection" [(ngModel)]="selectedVendor" [optionTemplate]="optionVendorTemplate" (selectedOptionChange)="changeVendor()" name="selectVendor">
+                    <sui-select-option class="select-option" *ngFor="let vendor of allVendors" [value]="vendor">
+                    </sui-select-option>
+                </sui-select>
+            </div>
+            <div *ngIf="selectedVendors !== undefined">
+                <div class="flex-vendors">
+                    <div class="flex-form" *ngFor="let vendor of selectedVendors">
+                        <div class="face">
+                            <img class="ui avatar image face-icon" src="{{vendor.Avatar}}">
+                            <sui-rating class="star" [ngModel]="vendor.Rating" [isReadonly]="true" style="margin-top: 3px;"></sui-rating>
+                            <div>Reviews: {{vendor.Reviews}}</div>
+                        </div>
+
+
+                        <div class="vendor-description">
+                            <div class="description">
+                                <div>
+                                    <label>Name: </label> {{vendor.FIO}}
+                                </div>
+                                <div class="ui divider"></div>
+                                <div>
+                                    <label>Experience: </label> {{vendor.Experience}}
+                                </div>
+                                <div class="ui divider"></div>
+                                <div>
+                                    <label>Position: </label> {{vendor.Position}}
+                                </div>
+                                <div class="ui divider"></div>
+                                <div>
+                                    <a (click)="openMessageModal(vendor)" class="add-mess">
+                                        <span *ngIf="!messages[vendor.Id]">Add message</span>
+                                        <span *ngIf="messages[vendor.Id]">Edit message</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delete-vendor">
+                            <i class="remove icon absolute-icon" (click)="deleteSelectedVendor(vendor)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="centered row" *ngIf="openedDetailedWindow">
+        <div class="three wide column">
+            <button class="ui basic button" (click)="addVendors()" [ngClass]="{'loading':isLoaded}">
+              <h5 *ngIf="!isLoaded">Send offer</h5>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="company === undefined" class="ui active inverted dimmer" style="background-color: rgba(255,255,255,.85);z-index: 0;">
+    <div class="ui text loader">Loading</div>
+</div>
+
+
+
+<ng-template class="modalImage" let-context let-modal="modal" #modalDeleteTemplate>
+    <div class="content">
+        <div align="center">
+            <div class="title">
+                <label>Delete a vendor</label>
+            </div>
+            <div class="content">
+                <p>Are you sure you want to delete this vendor?</p>
+            </div>
+            <div class="ui padded grid centered actions-buttons">
+                <div class="ui active button file-upload-save" (click)="deleteVendor()">
+                    <label class="button-text">Delete</label>
+                </div>
+                <div class="ui active button file-upload-save" (click)="activeModal.deny(null)">
+                    <label class="button-text">Cancel</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template let-context let-modal="modal" #messageModal>
+    <div class="ui content">
+        <form class="ui reply form" name="reviewForm" #messageForm="ngForm">
+            <div class="field">
+                <label>Type some information for vendor</label>
+                <textarea required placeholder="ADDITIONAL MESSAGE" name="reason" [(ngModel)]="messages[context.id]" #reasonText="ngModel"></textarea>
+            </div>
+            <div class="save-btn">
+                <a (click)="saveMessage()" [ngClass]="{'disabled': messageForm.invalid}" class="ui basic button decline-confirm">
+                    <p *ngIf="!loader" style="color:#FF647A;">Save</p>
+                </a>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template let-context let-modal="modal" #reasonModal>
+    <div class="ui content">
+        <form class="ui reply form">
+            <div class="field">
+                <textarea readonly name="reason">{{context.reason}}</textarea>
+            </div>
+        </form>
+    </div>
+</ng-template>

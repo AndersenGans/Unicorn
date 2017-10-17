@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D360FB2-C2DB-43EA-95D8-2802C1DD67FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Unicorn.Shared</RootNamespace>
+    <AssemblyName>Unicorn.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTOs\AccountDTO.cs" />
+    <Compile Include="DTOs\Admin\AccountDTO.cs" />
+    <Compile Include="DTOs\Admin\AccountsPage.cs" />
+    <Compile Include="DTOs\Book\BookDTO.cs" />
+    <Compile Include="DTOs\Book\BookOrderDTO.cs" />
+    <Compile Include="DTOs\Book\CustomerBookDTO.cs" />
+    <Compile Include="DTOs\Book\ShortTaskDTO.cs" />
+    <Compile Include="DTOs\Book\VendorBookDTO.cs" />
+    <Compile Include="DTOs\CalendarDTO.cs" />
+    <Compile Include="DTOs\CategoryDTO.cs" />
+    <Compile Include="DTOs\Chart\AnalyticsDTO.cs" />
+    <Compile Include="DTOs\Chart\ChartPointDTO.cs" />
+    <Compile Include="DTOs\Chart\LineChartDTO.cs" />
+    <Compile Include="DTOs\Chart\PieChartDTO.cs" />
+    <Compile Include="DTOs\Chat\ChatDialogDTO.cs" />
+    <Compile Include="DTOs\Chat\ChatFileDTO.cs" />
+    <Compile Include="DTOs\Chat\ChatMessageDTO.cs" />
+    <Compile Include="DTOs\CompanyDTO.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyBook.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyBooks.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyWorks.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyCategory.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyContacts.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyDetails.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyReviews.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanySubcategory.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyVendor.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyVendors.cs" />
+    <Compile Include="DTOs\CompanyPage\CompanyWork.cs" />
+    <Compile Include="DTOs\CompanyPage\ShortCompanyDTO.cs" />
+    <Compile Include="DTOs\ContactProviderDTO.cs" />
+    <Compile Include="DTOs\Contact\ContactDTO.cs" />
+    <Compile Include="DTOs\Contact\ContactShortDTO.cs" />
+    <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\Email\EmailHost.cs" />
+    <Compile Include="DTOs\Email\EmailMessage.cs" />
+    <Compile Include="DTOs\Email\EmailTemplate.cs" />
+    <Compile Include="DTOs\ExtraDayDTO.cs" />
+    <Compile Include="DTOs\FullPerformerDTO.cs" />
+    <Compile Include="DTOs\History\HistoryDTO.cs" />
+    <Compile Include="DTOs\History\VendorHistoryDTO.cs" />
+    <Compile Include="DTOs\LocationDTO.cs" />
+    <Compile Include="DTOs\Notification\NotificationDTO.cs" />
+    <Compile Include="DTOs\Offer\OfferDTO.cs" />
+    <Compile Include="DTOs\Offer\ShortOfferDTO.cs" />
+    <Compile Include="DTOs\PermissionDTO.cs" />
+    <Compile Include="DTOs\PersonDTO.cs" />
+    <Compile Include="DTOs\Popular\PerformerDTO.cs" />
+    <Compile Include="DTOs\Popular\PerformersPage.cs" />
+    <Compile Include="DTOs\Popular\PopularCategoryDTO.cs" />
+    <Compile Include="DTOs\PortfolioItemDTO.cs" />
+    <Compile Include="DTOs\RatingDTO.cs" />
+    <Compile Include="DTOs\Register\CompanyRegisterDTO.cs" />
+    <Compile Include="DTOs\Register\CustomerRegisterDTO.cs" />
+    <Compile Include="DTOs\Register\VendorRegisterDTO.cs" />
+    <Compile Include="DTOs\ReportDTO.cs" />
+    <Compile Include="DTOs\Review\ReviewDTO.cs" />
+    <Compile Include="DTOs\Review\ReviewSenderDTO.cs" />
+    <Compile Include="DTOs\Review\ShortReviewDTO.cs" />
+    <Compile Include="DTOs\RoleDTO.cs" />
+    <Compile Include="DTOs\Search\SearchWorkDTO.cs" />
+    <Compile Include="DTOs\Search\Sort.cs" />
+    <Compile Include="DTOs\ShortProfileInfoDTO.cs" />
+    <Compile Include="DTOs\SocialAccountDTO.cs" />
+    <Compile Include="DTOs\Subcategory\SubcategoryDTO.cs" />
+    <Compile Include="DTOs\Subcategory\SubcategoryShortDTO.cs" />
+    <Compile Include="DTOs\User\BookShortDto.cs" />
+    <Compile Include="DTOs\User\HistoryShortDto.cs" />
+    <Compile Include="DTOs\User\UserForOrder.cs" />
+    <Compile Include="DTOs\User\UserShortDTO.cs" />
+    <Compile Include="DTOs\Vendor\ShortVendorDTO.cs" />
+    <Compile Include="DTOs\Vendor\VendorDTO.cs" />
+    <Compile Include="DTOs\WorkDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\HttpWrapClientService.cs" />
+    <Compile Include="services\implementations\HttpWrapConfiguration.cs" />
+    <Compile Include="services\implementations\HttpWrapException.cs" />
+    <Compile Include="services\implementations\HttpWrapResponse.cs" />
+    <Compile Include="services\implementations\JsonSerializer.cs" />
+    <Compile Include="services\interception\IHttpInterceptor.cs" />
+    <Compile Include="services\interfaces\IHttpWrapConfiguration.cs" />
+    <Compile Include="services\interfaces\IHttpWrapResponse.cs" />
+    <Compile Include="services\interfaces\IHttpWrapClient.cs" />
+    <Compile Include="services\interfaces\IQueryStringBuilder.cs" />
+    <Compile Include="services\interfaces\IRequestContent.cs" />
+    <Compile Include="services\interfaces\ISerializer.cs" />
+    <Compile Include="services\implementations\JsonRequestContent.cs" />
+    <Compile Include="services\implementations\QueryStringBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Unicorn.DataAccess\Unicorn.DataAccess.csproj">
+      <Project>{3CD69EAE-0362-4F57-91FA-84507C885797}</Project>
+      <Name>Unicorn.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

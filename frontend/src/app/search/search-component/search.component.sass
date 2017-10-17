@@ -1,0 +1,250 @@
+@import "../../../global-style-variables.sass";
+
+.ui.grid
+    // color: gray;
+
+.settings-container
+    padding-top: 35px !important;
+    padding-left: 45px !important;
+    padding-right: 15px !important;
+
+.calendar.icon
+    margin-left: 10px !important;
+
+.ui.active.button.main
+  background: $primary-color;
+  color: white;
+
+.ui.active.button.secondary
+  background: transparent;
+  color: $primary-color;
+  border: solid 1px $primary-color;
+  margin-right: 10px;
+
+.button-right
+    float: right;
+
+.search-btn-div
+    display: flex;
+    justify-content: flex-end;
+
+.search-btn-div > button
+    width: 48%;
+    height: 38px;
+
+.active-filters
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    padding: 3px 5px;
+    background-color: $primary-color;
+    color: white;
+
+.ui.divider
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+.empty-header
+    color: gray;
+    font-size: 15px;
+
+.padding-top
+    padding-top: 22px !important;
+
+.padding-width
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+
+.margin-left
+    margin-left: 10px;
+
+.margin-right
+    margin-right: 10px;
+
+.margin-height
+   margin: 5px 0; 
+
+.align-right
+    float: right;
+
+.full-width
+    width: 100%!important;
+
+.rating-container
+    display: flex;
+    flex-direction: row;
+
+.distance-container
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+.slider
+    width: 90% !important;
+
+.rating-box
+    width: 120px;
+
+sui-multi-select
+    padding-left: 0 !important;
+    
+.cell
+    width: 29%;
+    margin: 2%;
+
+.cell-selected
+    margin: 15px 15px !important;
+    padding: 15px !important;
+    border: 1px solid $primary-color;
+    border-radius: 7px;
+    background-color: #fef6f6;
+
+.cell-title
+    font-size: 16px;
+
+.cell > a
+    color: black;
+
+.cell-info > p
+    margin: 5px 0;
+
+.ui.medium.image
+    width: 100%
+
+.ui.fluid.image
+    height: 230px;
+    border: 1px solid #E5E5E5;
+    object-fit: cover;
+
+h3, h4, h5
+    color: gray;
+
+h3
+    margin-top: 5px;
+
+.categories-container
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px 0;
+
+.category
+    margin: 0 2px;
+    padding: 2px 8px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    color: gray;
+
+.categories-container h5
+    margin: 0 5px 0 0;
+
+.flex-centered
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+.map-container 
+    position: fixed;
+    right: 20px;
+    top: calc(20px + #{$header-height});
+    width: 34%;    
+    height: calc(100vh - 40px - #{$header-height} - #{$footer-height} - #{$separator-height} - #{$separator-margin});;    
+    background-color: gray;
+
+.map
+    height: 100%;
+
+#search-panel
+    position: sticky;
+    z-index: 1;
+    background: white;
+    top: calc(#{$header-height} - 5px);
+
+.settings-container
+    padding-top: 0!important;
+
+.map-marker
+    font-weight: bold;
+    background-color: white;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+.map-marker > a
+    cursor: pointer
+
+.active-marker
+    border: 2px solid red;
+    position: relative;
+    z-index: 1;
+
+.location
+    font-size: 13px;
+    cursor: pointer;
+    color: gray;
+
+.categories-container
+    padding-left: 2.5%!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+
+
+//responsive
+.flex-inputs
+    width: 100%!important
+    flex-direction: row!important
+    flex-wrap: nowrap!important
+
+.ui.grid.container.segment.full-width
+    width: 99% !important
+    margin-left: 0 !important
+    margin-right: 0 !important
+
+.post-filters-div
+    width: 100%
+    display: flex
+    justify-content: space-between
+
+.add-filter-container
+    margin-bottom: 10px
+    width: 100%
+    display: flex
+
+.add-filter-container-column
+    width: 100%
+    padding-left: 2.5%
+    padding-right: 2.5%
+
+#main
+    width: 65%
+
+@media only screen and (max-width: 600px)
+    .add-filter-container
+        flex-wrap: wrap
+
+    .add-filter-container-column
+        padding-top: 15px
+
+@media only screen and (max-width: 1100px)
+    .map-container
+        display: none
+
+    #main
+        width: 100%
+
+    .header-label
+        display: none !important
+
+@media only screen and (max-width: 1300px) and (min-width: 1101px)
+    .map-container
+        width: 34%
+
+    #main
+        width: 66%
+
+@media only screen and (max-width: 750px)
+    .cell
+        width: 45%
+    
+    .ui.fluid.image
+        height: 260px

@@ -1,0 +1,19 @@
+<div *ngIf="company !== undefined">
+    <div class="flex-list" *ngIf="!isVendorsEmpty">
+        <div class="child-flex" *ngFor="let vendor of company.Vendors">
+            <a><img class="ui avatar image vendor-avatar" src={{vendor.Avatar}}></a>
+            <div class="content">
+                <div class="header"><a routerLink="/vendor/{{vendor.Id}}">{{vendor.FIO}}</a></div>{{vendor.Position}}
+            </div>
+        </div>
+        <div *ngIf="company.Vendors === undefined" class="no-vendors">
+            There are no vendors
+        </div>
+    </div>
+</div>
+<div *ngIf="isVendorsEmpty" class="empty-header">
+    There are no vendors
+</div>
+<div *ngIf="!isLoaded" class="ui active inverted dimmer" style="z-index: 0;">
+    <div class="ui text loader">Loading</div>
+</div>

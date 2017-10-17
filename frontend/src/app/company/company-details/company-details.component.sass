@@ -1,0 +1,70 @@
+@import "../../../global-style-variables.sass";
+
+$small: 560px;
+$large: 690px;
+
+@mixin respond-to($media) 
+  @if $media == handhelds 
+    @media only screen and (max-width: $small) { @content; }
+  
+  @else if $media == medium-screens 
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+  
+  @else if $media == wide-screens 
+    @media only screen and (min-width: $large) { @content; }
+  
+
+
+.ui.menu
+  @include respond-to(handhelds) { font-size: 0.71rem!important ;}
+  @include respond-to(medium-screens) { font-size: 0.8rem!important ; }
+  @include respond-to(wide-screens) { font-size: 1rem!important ; }
+img
+    object-fit: cover!important;
+
+.main-content
+    max-width: 960px;
+    margin: 0 auto;
+
+div
+    font-family: 'Verdana', 'Century Gothic', 'Calibri', 'Trebuchet MS', sans-serif!important;
+
+.ui.segment
+    margin-top: 0!important;
+
+.ui.segment.tab
+    min-height: 80px;
+    
+.ui.secondary.pointing.menu .item
+    text-transform: uppercase;
+
+.ui.grid > .row > .column
+    padding-left: 1rem;
+    padding-right: 1rem;
+.ui.fluid.image
+   overlay: hidden;
+.without-padd
+    padding-left: 0!important;
+    padding-right: 0!important;
+
+.ui.secondary.pointing.menu .active.item
+    border-color: $primary-color;
+
+#header
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+       
+
+.ui.fluid.image
+    object-fit: contain;   
+    max-width: 960px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+
+.empty-header
+    color: gray;
+    font-size: 15px;

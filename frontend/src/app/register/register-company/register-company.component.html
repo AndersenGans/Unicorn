@@ -1,0 +1,58 @@
+<div class="">
+    <div class="ui form">
+
+        <form name="companyForm" #companyForm="ngForm">
+            <div class="field">
+                <input required type="text" name="compname" placeholder="NAME" [(ngModel)]="name" #compname="ngModel">
+                <div *ngIf="compname.invalid && (compname.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <textarea rows="3" name="desc" placeholder="DESCRIPTION (OPTIONAL)" [(ngModel)]="description" #desc="ngModel"></textarea>
+            </div>
+
+            <div class="field">
+                <input required pattern="\S+@\S+\.\S+" type="text" name="mail" placeholder="EMAIL" [(ngModel)]="email" #mail="ngModel">
+                <div *ngIf="mail.invalid && (mail.dirty)">
+                    <div *ngIf="mail.errors.required" class="valid-error">* Required</div>
+                    <div *ngIf="mail.errors.pattern" class="valid-error">* Invalid mail</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <input required pattern="^\+(?:[0-9]●?){6,14}[0-9]$" type="text" name="phonenumb" placeholder="PHONE" [(ngModel)]="phone" #phonenumb="ngModel">
+                <div *ngIf="phonenumb.invalid && (phonenumb.dirty)">
+                    <div *ngIf="phonenumb.errors.required" class="valid-error">* Required</div>
+                    <div *ngIf="phonenumb.errors.pattern" class="valid-error">* Invalid number</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <input required type="number" name="stuff" placeholder="STAFF" [(ngModel)]="staff" #stuff="ngModel">
+                <div *ngIf="stuff.invalid && (stuff.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker required placeholder="FOUNDATION" #date="ngModel" name="date" [(ngModel)]="foundation" [pickerMode]="mode" [pickerMaxDate]="getCurrDate()">
+                </div>
+                <div *ngIf="date.invalid && (date.touched)" class="valid-error">* Required</div>
+            </div>
+            <div class="field">
+                <input places-auto-complete id="autocomplete" [types]="['geocode']" placeholder="LOCATION" value={{location.City}} (place_changed)="placeChanged($event)" />
+            </div>
+            <!-- <div *ngIf="error" class="error-field">
+                <sui-message class="error">
+                    <div class="header">
+                        Error
+                    </div>
+                    <p>You must fill all fields</p>
+                </sui-message>
+            </div> -->
+            <div class="field">
+                <a align=center [ngClass]="{'disabled': companyForm.invalid, 'loading': loader}" class="ui button reg-btn" (click)="confirmRegister(companyForm)">REGISTER</a>
+            </div>
+        </form>
+    </div>
+</div>

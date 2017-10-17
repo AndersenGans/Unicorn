@@ -1,0 +1,70 @@
+﻿<div class="main-content">
+    <div class="ui grid container remove-margin-top-bottom" *ngIf="user !== undefined">
+        <div class="row remove-padding-top">
+            <div class="sixteen wide column container">
+                <div class="user-header" id="user-header" [style.backgroundImage]="backgroundUrl">
+                    <label id="banner-loader" for="banner-input" class="ui icon button basic" [ngClass]="{'loading': uploading}">
+                    <i class="icon up-color" [ngClass]="{'upload': !uploading}"></i>
+                </label>
+                    <input type="file" id="banner-input" accept="image/*" (change)="bannerListener($event)">
+
+                    <div (click)="selectAvatar()" *ngIf="user!== undefined">
+                        <div class="ui small circular image">
+                            <div class="avatar">
+                                <img *ngIf="!user.CroppedAvatar" id="user-avatar" src="{{user.Avatar}}" />
+                                <img *ngIf="user.CroppedAvatar" id="user-avatar" src="{{user.CroppedAvatar}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-title" *ngIf="user!== undefined">
+                        <h3>{{user.Name}} {{user.SurName}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide column container">
+            <sui-tabset>
+                <div class="ui pointing secondary menu">
+                    <a routerLink="/user/{{user.Id}}/edit" [queryParams]="{tab: 'profile'}" class="item" suiTabHeader="1">EDIT</a>
+                    <a routerLink="/user/{{user.Id}}/edit" [queryParams]="{tab: 'tasks'}" class="item" suiTabHeader="2" [isActive]="tasksTabActive">TASKS</a>
+                    <a routerLink="/user/{{user.Id}}/edit" [queryParams]="{tab: 'messages'}" class="item" suiTabHeader="3" [isActive]="messagesTabActive">MESSAGES
+                        <label *ngIf="unreadDialogCount > 0" class="unread-msg"></label>
+                    </a>
+                    <a routerLink="/user/{{user.Id}}/edit" [queryParams]="{tab: 'history'}" class="item" suiTabHeader="4">HISTORY</a>
+                </div>
+                <div class="row">
+                    <div class="ui grid container">
+                        <div class="row">
+                            <div class="sixteen wide container column">
+                                <div class="ui segment" suiTabContent="1">
+                                    <app-user-profile [user]="user"></app-user-profile>
+                                </div>
+                            </div>
+                            <div class="sixteen wide container column">
+                                <div class="ui segment" suiTabContent="2">
+                                    <app-user-tasks [user]="user"></app-user-tasks>
+                                </div>
+                            </div>
+                            <div class="sixteen wide container column">
+                                <div class="ui segment r-messages" suiTabContent="3">
+                                    <app-user-messages></app-user-messages>
+                                </div>
+                            </div>
+                            <div class="sixteen wide container column">
+                                <div class="ui segment" suiTabContent="4">
+                                    <app-user-history [user]="user"></app-user-history>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-tabset>
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="user === undefined" class="ui active inverted dimmer" style="z-index: 0;">
+    <div class="ui text loader">Loading</div>
+</div>

@@ -1,0 +1,64 @@
+<div class="">
+    <div class="ui form">
+        <form name="vendorForm" #vendorForm="ngForm">
+            <div class="field">
+                <input required type="text" name="name" placeholder="FIRST NAME" [(ngModel)]="firstName" #firstname="ngModel">
+                <div *ngIf="firstname.invalid && (firstname.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <input type="text" name="middlename" placeholder="MIDDLE NAME (OPTIONAL)" [(ngModel)]="middleName" #middlename="ngModel">
+            </div>
+
+            <div class="field">
+                <input required type="text" name="lastname" placeholder="LAST NAME" [(ngModel)]="lastName" #lastname="ngModel">
+                <div *ngIf="lastname.invalid && (lastname.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker required placeholder="BIRTHDAY" type="date" #date="ngModel" name="date" [(ngModel)]="birthday" [pickerMode]="mode" [pickerMaxDate]="getCurrDate()">
+                </div>
+                <div *ngIf="date.invalid && (date.touched)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <input required pattern="\S+@\S+\.\S+" type="text" name="mail" placeholder="EMAIL" [(ngModel)]="email" #mail="ngModel">
+                <div *ngIf="mail.invalid && (mail.dirty)">
+                    <div *ngIf="mail.errors.required" class="valid-error">* Required</div>
+                    <div *ngIf="mail.errors.pattern" class="valid-error">* Invalid mail</div>
+                </div>
+            </div>
+
+            <div class="field">
+                <input required type="text" name="spec" placeholder="SPECIALITY" [(ngModel)]="speciality" #spec="ngModel">
+                <div *ngIf="spec.invalid && (spec.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <input required type="text" name="pos" placeholder="POSITION" [(ngModel)]="position" #pos="ngModel">
+                <div *ngIf="pos.invalid && (pos.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <input required type="number" name="exp" placeholder="EXPERIENCE" [(ngModel)]="experience" #exp="ngModel">
+                <div *ngIf="exp.invalid && (exp.dirty)" class="valid-error">* Required</div>
+            </div>
+
+            <div class="field">
+                <input required pattern="^\+(?:[0-9]●?){6,14}[0-9]$" type="text" name="phonenumb" placeholder="PHONE" [(ngModel)]="phone" #phonenumb="ngModel">
+                <div *ngIf="phonenumb.invalid && (phonenumb.dirty)">
+                    <div *ngIf="phonenumb.errors.required" class="valid-error">* Required</div>
+                    <div *ngIf="phonenumb.errors.pattern" class="valid-error">* Invalid number</div>
+                </div>
+            </div>
+            <div class="field">
+                <input places-auto-complete id="autocomplete" [types]="['geocode']" placeholder="LOCATION" value={{location.City}} (place_changed)="placeChanged($event)" />
+            </div>
+            <div class="field">
+                <a [ngClass]="{'disabled': vendorForm.invalid, 'loading': loader}" class="ui button reg-btn" (click)="confirmRegister(vendorForm)">REGISTER</a>
+            </div>
+        </form>
+    </div>
+</div>

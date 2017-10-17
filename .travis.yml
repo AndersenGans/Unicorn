@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '8.1'
+branches:
+  only:
+  - develop
+before_install:
+  - sudo apt-get install ncftp
+before_script:
+- cd frontend
+- npm install -g @angular/cli
+- npm install
+script:
+- ng build --target=development --environment=prod
+after_success:
+  - cd dist
+  - ncftpput -R -v -u $FTP_USER -p $FTP_PASSWORD 50.31.20.254 Unicorn/frontend ./
+notifications:
+  email:
+    on_failure: change
+    on_success: change

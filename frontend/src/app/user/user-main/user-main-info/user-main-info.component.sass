@@ -1,0 +1,63 @@
+@import "../../../../global-style-variables.sass";
+
+h5 
+ color: grey;
+ margin-bottom: 11px;
+h4
+ padding-left: 5px;
+ margin-bottom: 0px;
+ margin-top: 3px;
+.map 
+  width: 100%;
+.container
+  display: flex;
+  justify-content: space-around;
+.label
+  margin: 0.5em;
+  margin-bottom: 0px;
+  color: grey;
+  font-size: 13px;
+  background: transparent;
+  text-decoration: none;
+  margin-left: 5px;
+
+.flex-header
+  display: flex;
+  justify-content: space-between;
+  height: 3em;
+  align-items: center;
+
+.flex-header.title
+  margin: 0.5em;
+\:host /deep/ .ui.rating .icon.active
+	color: $primary-color;
+.ui.form
+  margin: 0px;
+.review-link
+  display: block;
+.review-link:hover
+ cursor: pointer;
+ 
+.ui.active.button
+  background: transparent;
+  color: $primary-color;
+  border: solid 1px $primary-color;
+  font-size: 12px;
+  width: 140px;
+  height: 35px;
+  margin-top: 15px;
+
+.ui.active.button.main
+    width: 200px;
+    height: 41px;
+    background: $primary-color;
+    color: white;
+
+.valid-error 
+    color: #ff6666;
+    font-size: 10px;
+    position: absolute;
+
+input.ng-dirty.ng-invalid.ng-touched 
+    border-color: #ff8080;
+    

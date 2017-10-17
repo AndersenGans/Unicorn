@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="header-wrapper">
+        <div id="header">
+            <a routerLink='/index' class="logo-container">
+                <img class="logo" src="/assets/images/unicorn.png" />
+            </a>
+            <div id="menu">
+                <app-menu></app-menu>
+            </div>
+        </div>
+    </div>
+    <div class="content-offset"></div>
+    <div id="content">
+        <router-outlet></router-outlet>
+    </div>
+    <div id="chat">
+        <app-mini-chat [dialog]="dialog" *ngIf="isChatOpen && dialog !== undefined"></app-mini-chat>
+    </div>
+    <div id="footer">
+        <app-footer></app-footer>
+    </div>
+</div>

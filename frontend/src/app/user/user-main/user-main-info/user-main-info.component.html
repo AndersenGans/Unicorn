@@ -1,0 +1,43 @@
+<div class="two column stackable ui grid">
+    <div class="column">
+        <div class="ui form" style="padding-right: 80px; padding-left: 50px;">
+            <div class="field">
+                <h5 class="gray_font">On Unicorn since {{user.DateCreated | date:'mediumDate'}}</h5>
+                <!-- <sui-rating [(ngModel)]="rating" [isReadonly]="true"></sui-rating>
+                <a class="review-link">&#160;Reviews({{reviewsCount}})</a> -->
+                <div style="margin: 10px 0 0 5px">
+                    <a class="report-link" (click)="openReportModal()">Report this customer?</a>
+                </div>
+                <h4 style="margin-top:15px;">Name</h4>
+                <a class="label" style="padding-top: 0px">{{user.Name}} {{user.SurName}} {{user.MiddleName}}
+                     </a>
+                <div class="ui divider" style="margin-top: 0px; margin-bottom: 10px;"></div>
+                <h4>Birthday</h4>
+                <a class="label" style="padding-top: 0px;">
+            {{user.Birthday | date:'shortDate'}}
+                </a>
+                <div class="ui divider" style="margin-top: 0px; margin-bottom: 10px;"></div>
+                <h4>Phone</h4>
+                <a class="label" style="padding-top: 0px" target="_blank" href="tel:{{user.Phone}}">
+                    <i class="colored call icon"></i> {{user.Phone}}
+                </a>
+                <div class="ui divider" style="margin-top: 0px; margin-bottom: 5px;"></div>
+                <h4>Email</h4>
+                <a class="label" style="padding-top: 0px " target="_blank" href="mailto:{{user.Email}}">
+                    <i class="colored mail icon "></i> {{user.Email}}
+                </a>
+                <div align="right">
+                    <button class="ui active button" *ngIf="user.AccountId !== ownerId && !isGuest" [ngClass]="{'loading':isLoaded}" (click)="createChat()">
+                    <i class="comments icon"></i> START A CHAT
+               </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <h5>Location: {{user.Location.City}}, {{user.Location.Adress}}</h5>
+        <div *ngIf="map != undefined" class="map">
+            <app-map [inputMap]="map"></app-map>
+        </div>
+    </div>
+</div>

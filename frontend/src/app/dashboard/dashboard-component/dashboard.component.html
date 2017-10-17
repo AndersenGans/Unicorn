@@ -1,0 +1,39 @@
+<div id="dashboard">
+    <div id="dash-header">
+        <p>DASHBOARD</p>
+    </div>
+    <div id="dash-content">
+        <div class="sixteen wide column container">
+            <sui-tabset>
+                <div class="ui pointing secondary menu">
+                    <a class="item" suiTabHeader="1">Pendings</a>
+                    <a class="item" suiTabHeader="2">In progress</a>
+                    <a class="item" suiTabHeader="3">Finished</a>
+                    <a class="item" suiTabHeader="4" *ngIf="isVendor">Offers</a>
+                </div>
+                <div class="row">
+                    <div class="ui grid container">
+                        <div class="row">
+                            <div class="sixteen wide column">
+                                <div class="ui " suiTabContent="1">
+                                    <app-dashboard-pendings *ngIf="isVendor"></app-dashboard-pendings>
+                                    <app-dashboard-company-pendings *ngIf="isCompany"></app-dashboard-company-pendings>
+                                </div>
+                                <div class="ui " suiTabContent="2">
+                                    <app-dashboard-progress *ngIf="isVendor"></app-dashboard-progress>
+                                    <app-dashboard-company-progress *ngIf="isCompany"></app-dashboard-company-progress>
+                                </div>
+                                <div class="ui " suiTabContent="3">
+                                    <app-dashboard-finished></app-dashboard-finished>
+                                </div>
+                                <div class="ui" suiTabContent="4" *ngIf="isVendor">
+                                    <app-dashboard-offers></app-dashboard-offers>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sui-tabset>
+        </div>
+    </div>
+</div>

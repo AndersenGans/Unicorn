@@ -1,0 +1,103 @@
+@import "../../../../global-style-variables.sass"
+
+.no-reviews    
+    text-align: center
+
+.met
+    font-size: 13px
+    margin: 8 8 8 0px
+    color: #4d4d4d
+
+#main
+    width: 90%
+    margin-left: auto
+    margin-right: auto
+    font-size: 13px
+
+.rate
+    margin-top: 5px
+
+.date
+    font-size: 11px
+    color: gray
+
+.review-text
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+.review-text p
+    &:hover
+        cursor: pointer;
+
+.task
+    color: #4d4d4d
+    font-size: 12px
+
+.task > strong
+    font-size: 12px
+
+.from
+    font-weight: bold
+    color: #4d4d4d
+
+.ui.tiny.circular.image.avatar
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+
+.container
+    padding: 15px 15px 15px 15px;
+
+.empty-header
+    color: gray;
+    font-size: 15px;
+    font-weight: normal;
+    margin-top: 0px!important;
+
+.ui.button.remove
+    width: 7em;
+    text-align: center;
+    box-shadow: 0 0 0 1px $primary_color;
+    background-color: white;
+    color: $primary_color;
+    &:hover
+        background-color: $primary_color;
+        color: white;
+
+.content > p
+    word-wrap: break-word;
+
+
+$small: 600px;
+$medium: 745px;
+$large: 750px;
+$normal: 800px;
+
+@mixin respond-to($media) 
+  @if $media == handhelds 
+    @media only screen and (max-width: $small) { @content; }
+  @else if $media == medium-screens1 
+    @media only screen and (min-width: $small + 1) and (max-width: $medium - 1) { @content; }
+  @else if $media == medium-screens2
+    @media only screen and (min-width: $medium) and (max-width: $large - 1) { @content; }
+  @else if $media == medium-screens3
+    @media only screen and (min-width: $large) and (max-width: $normal - 1) { @content; }
+  @else if $media == wide-screens 
+    @media only screen and (min-width: $normal) { @content; }
+
+p, h5, .ui.button, .ui.button, .from
+	@include respond-to(handhelds) { font-size: 0.55rem!important ;}
+	@include respond-to(medium-screens1) { font-size: 0.68rem!important ; }
+	@include respond-to(medium-screens2) { font-size: 0.8rem!important ; }
+	@include respond-to(medium-screens3) { font-size: 0.9rem!important ; }
+	@include respond-to(wide-screens) { font-size: 1rem!important ; }
+
+.date
+	@include respond-to(handhelds) { font-size: 0.35rem!important ;}
+	@include respond-to(medium-screens1) { font-size: 0.48rem!important ; }
+	@include respond-to(medium-screens2) { font-size: 0.6rem!important ; }
+	@include respond-to(medium-screens3) { font-size: 0.7rem!important ; }
+	@include respond-to(wide-screens) { font-size: 0.8rem!important ; }
